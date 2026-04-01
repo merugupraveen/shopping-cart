@@ -1,6 +1,8 @@
 package com.shashi.utility;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -61,7 +63,7 @@ public final class SessionCartUtil {
         }
         if (availableQty < qty) {
             int oldAvailable = availableQty;
-            if(availableQty == 0) {
+            if (availableQty == 0) {
                 cart.remove(prodId);
                 return "Product is Out of Stock!";
             }
@@ -85,7 +87,7 @@ public final class SessionCartUtil {
         for (Map.Entry<String, Integer> e : cart.entrySet()) {
             int qty = e.getValue() == null ? 0 : e.getValue();
             if (qty > 0) {
-                list.add(new CartBean("monkey-session", e.getKey(), qty));
+                list.add(new CartBean("session", e.getKey(), qty));
             }
         }
         return list;
